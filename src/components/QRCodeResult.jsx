@@ -8,12 +8,12 @@ const QRCodeResult = (props) => {
     e.preventDefault();
     const qrCodeURL = document
       .getElementById('qr-code')
-      .toDataURL('image/jpg')
-      .replace('image/jpg', 'image/octet-stream');
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
     console.log(qrCodeURL);
     let aEl = document.createElement('a');
     aEl.href = qrCodeURL;
-    aEl.download = 'QR_Code.jpg';
+    aEl.download = 'QR_Code.png';
     document.body.appendChild(aEl);
     aEl.click();
     document.body.removeChild(aEl);
@@ -21,7 +21,7 @@ const QRCodeResult = (props) => {
 
   return (
     <div className='flex flex-col items-center'>
-      <QRCode fgColor='#7c2d12' id='qr-code' size={400} level='M' value={url} />
+      <QRCode fgColor='#7c2d12' id='qr-code' size={350} level='M' value={url} />
       <a
         onClick={downloadQR}
         className='mt-2 font-semibold cursor-pointer text-yellow-800'
