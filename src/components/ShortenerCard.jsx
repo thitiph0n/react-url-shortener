@@ -12,15 +12,18 @@ const ShortenerCard = (props) => {
 
   const shortenLink = async () => {
     //validate input
+    let longUrlErr, customUrlErr;
     if (longUrlInput.trim() === '') {
-      setLongUrlError("URL can't be empty");
+      longUrlErr = "URL can't be empty";
     }
 
     if (customUrlInput.length > 16) {
-      setCustomUrlError('Custom URL shuould have maximum 16 characters');
+      customUrlErr = 'Custom URL shuould have maximum 16 characters';
     }
 
-    if (longUrlError !== '' || customUrlError !== '') {
+    if (longUrlErr || customUrlErr) {
+      setLongUrlError(longUrlErr ? longUrlErr : '');
+      setCustomUrlError(customUrlErr ? customUrlErr : '');
       return;
     }
 
